@@ -1,0 +1,20 @@
+<%- include("partials/header") -%>
+    <div class="register">
+        <div class="reg">
+            <h1 style="color:  #1abc9c;">Compose</h1>
+            <div class="reg-in">
+                <form action="/compose" method="post">
+                    <div class="compose-form">
+                        <label><h3>Name</h3></label>
+                        <input class="form-control , compose-name" type="text" name="name1" width="100px">
+                        <label><h3>Post</h3></label>
+                        <textarea class="form-control" name="postbody" rows="4" cols="50"></textarea>
+    
+                    </div>
+                    <button type="submit" class="acc-btn" name="button">Publish</button>
+    
+                </form>
+            </div>
+        </div>
+    </div>
+    <%- include("partials/footer") -%>

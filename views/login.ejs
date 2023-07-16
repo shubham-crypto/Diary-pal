@@ -1,0 +1,23 @@
+<%- include("partials/header") -%>
+<div class="register">
+    <div class="reg">
+        <h1>Sign in</h1>
+          <div class="reg-in">
+              <form action="/login" method="post" class="form-signin">
+                  <input  class="form-control" type="text" name="username" label="Email" placeholder="Email address" required="" autofocus="" />
+                  <input   class="form-control" type="password" name="password" label="Password" placeholder="Password" required=""/>
+                  <button class="acc-btn" name="Signin" value="Login" type="Submit">Sign In</button>
+              </form>
+              <div class="reg-auth">
+                <div class="reg-card">
+                    <a class="btn-auth" href="/auth/google" role="button">
+                        <img class="google-img" src="google.png">
+                         Sign in with google
+                    </a>
+                </div>
+            </div>
+           </div>
+           
+    </div>
+</div>
+<%- include("partials/footer") -%>

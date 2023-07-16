@@ -1,0 +1,19 @@
+<%- include('partials/header') %>
+  <div class="register">
+    <div class="reg">
+      <div class="reg-in">
+        <h1>YOUR BEST BUDDY</h1>
+        <p style="text-align: center;">care to share</p>
+        <form action="/submit" method="POST">
+
+          <div class="form-signin">
+            <textarea  rows="4" cols="50" class="form-control , submit-ta" name="secret" placeholder="What's your secret?"></textarea>
+          </div>
+          <button type="submit" class="acc-btn">Submit</button>
+
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <%- include('partials/footer') %>
