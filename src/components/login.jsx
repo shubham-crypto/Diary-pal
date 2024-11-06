@@ -10,6 +10,7 @@ const SignIn = () => {
   
   // Get login function from context if using AuthContext
   const { login } = useContext(AuthContext);
+  const API_URL = process.env.REACT_APP_API_URL;
 
 
   const handleSubmit = async (e) => {
@@ -53,7 +54,7 @@ const SignIn = () => {
           </form>
           <div className="reg-auth">
             <div className="reg-card">
-              <a className="btn-auth" href="http://localhost:5000/auth/google" role="button">
+              <a className="btn-auth" href={`${API_URL}/auth/google`} role="button">
                 <img className="google-img" src={'google.png'} alt="Google" />
                 Sign in with Google
               </a>

@@ -18,12 +18,13 @@ const path = require('path');
 const MongoStore = require('connect-mongo');
 
 const JWT_SECRET = process.env.JWT_SECRET;
+const API_URL = process.env.REACT_APP_API_URL;
 
 // const homeStartingContent = "Lacus vel facilisis volutpat est velit egestas dui id ornare. Semper auctor neque vitae tempus quam. Sit amet cursus sit amet dictum sit amet justo. Viverra tellus in hac habitasse. Imperdiet proin fermentum leo vel orci porta. Donec ultrices tincidunt arcu non sodales neque sodales ut. Mattis molestie a iaculis at erat pellentesque adipiscing. Magnis dis parturient montes nascetur ridiculus mus mauris vitae ultricies. Adipiscing elit ut aliquam purus sit amet luctus venenatis lectus. Ultrices vitae auctor eu augue ut lectus arcu bibendum at. Odio euismod lacinia at quis risus sed vulputate odio ut. Cursus mattis molestie a iaculis at erat pellentesque adipiscing.";
 const aboutContent = "We vow to be your steadfast companion, helping you navigate through feelings of loneliness and stress with unwavering support. Since the beginning, we have made every conceivable effort to maintain the confidentiality and security of your personal experiences and emotions. Our commitment is to safeguard your privacy while providing a nurturing environment for you to thrive.Our dedication goes beyond mere assistance; we are here to be a constant source of encouragement and positivity in your life. We strive to uplift your spirits daily, ensuring you feel valued and supported. Whether you're facing challenges or celebrating successes, our goal is to be a reliable source of comfort and motivation.Together, we are committed to helping you cultivate a life filled with joy and resilience, offering the companionship and understanding you need to flourish. Your well-being is our top priority, and we are here to stand by you every step of the way.";
 const app = express();
 app.use(cors({
-  origin: '*',
+  origin: 'https://diary-pal.vercel.app/',
   optionsSuccessStatus: 200,
 }));
 app.use('/diary', authMiddleware);
@@ -95,7 +96,7 @@ passport.deserializeUser(function(id, done) {
   passport.use(new GoogleStrategy({
     clientID: process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
-    callbackURL: "http://localhost:5000/auth/google/secrets",
+    callbackURL: `${API_URL}/auth/google/secrets`,
     useProfileURL: "https://www.googleapis.com/oauth2/v3/userinfo",
     passReqToCallback: true
   },
@@ -131,7 +132,7 @@ passport.deserializeUser(function(id, done) {
       res.cookie('token', token);
           
        /// res.redirect('/auth/redirect'); 
-       res.redirect('http://localhost:3000/account')
+       res.redirect(`${API_URL}/account`)
     }
   );
 
@@ -317,7 +318,10 @@ app.post('/compose', authMiddleware, async (req, res) => {
  });
 
 
-  app.listen(5000, function () {
-    console.log("Server started on port 5000");
-  });
+ const port = process.env.PORT || 5000;
+
+ app.listen(port, function () {
+     console.log(`Server started on port ${port}`);
+ });
+ 
 }

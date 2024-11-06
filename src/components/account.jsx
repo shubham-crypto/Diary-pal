@@ -5,11 +5,12 @@ import axios from 'axios';
 const Account = () => {
   const { user, logout } = useContext(AuthContext);
   const [userDetails, setUserDetails] = useState(null);
+  const API_URL = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
     if (user) {
       const token = localStorage.getItem('token') || document.cookie.split('=')[1];
-      axios.get('http://localhost:5000/account', {
+      axios.get(`${API_URL}/account`, {
         headers: {
           Authorization: `Bearer ${token}`
         }

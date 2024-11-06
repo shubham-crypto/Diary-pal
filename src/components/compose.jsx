@@ -4,11 +4,12 @@ import axios from 'axios';
 const Compose = () => {
   const [name, setName] = useState('');
   const [postBody, setPostBody] = useState('');
+  const API_URL = process.env.REACT_APP_API_URL;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/compose', { name, postBody }, {
+      const response = await axios.post(`${API_URL}/compose`, { name, postBody }, {
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${localStorage.getItem('token')}`

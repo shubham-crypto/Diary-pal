@@ -3,11 +3,12 @@ import axios from 'axios';
 
 const SubmitSecret = () => {
   const [secret, setSecret] = useState('');
+  const API_URL = process.env.REACT_APP_API_URL;
   
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/submit', { secret }, {
+      const response = await axios.post(`${API_URL}/submit`, { secret }, {
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${localStorage.getItem('token')}`

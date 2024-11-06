@@ -10,12 +10,12 @@ export const AuthProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [loading, setLoading] = useState(true); // To manage loading state
   const navigate = useNavigate();
-
+  const API_URL = process.env.REACT_APP_API_URL;
   useEffect(() => {
     const token = localStorage.getItem('token') || document.cookie.split('=')[1];
 
     if (token) {
-      axios.get('http://localhost:5000/diary', {
+      axios.get(`${API_URL}/diary`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -38,7 +38,7 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (email, password) => {
     try {
-      const response = await axios.post('http://localhost:5000/login', { email, password });
+      const response = await axios.post(`${API_URL}/login`, { email, password });
       const { token, user: userData } = response.data;
       localStorage.setItem('token', token);
       axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
@@ -53,7 +53,7 @@ export const AuthProvider = ({ children }) => {
 
   const signup = async (email, password, role) => {
     try {
-      await axios.post('http://localhost:5000/signup', { email, password, role });
+      await axios.post(`${API_URL}/signup`, { email, password, role });
       await login(email, password);
     } catch (error) {
       console.error('Error signing up', error);

@@ -10,6 +10,7 @@ const SignUp = () => {
   });
   const [error, setError] = useState('');
   const navigate = useNavigate();
+  const API_URL = process.env.REACT_APP_API_URL;
 
   const handleChange = (e) => {
     setFormData({
@@ -25,7 +26,7 @@ const SignUp = () => {
       return;
     }
     try {
-      const response = await axios.post('http://localhost:5000/Signup', {
+      const response = await axios.post(`${API_URL}/Signup`, {
         email: formData.email,
         password: formData.password,
       });
@@ -87,7 +88,7 @@ const SignUp = () => {
           </form>
           <div className="reg-auth">
             <div className="reg-card">
-              <a className="btn-auth" href="http://localhost:5000/auth/google" role="button">
+              <a className="btn-auth" href={`${API_URL}/auth/google`} role="button">
                 <img className="google-img" src={'google.png'} alt="Google" />
                 Sign Up with Google
               </a>
