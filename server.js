@@ -24,7 +24,7 @@ const API_URL = process.env.REACT_APP_API_URL;
 const aboutContent = "We vow to be your steadfast companion, helping you navigate through feelings of loneliness and stress with unwavering support. Since the beginning, we have made every conceivable effort to maintain the confidentiality and security of your personal experiences and emotions. Our commitment is to safeguard your privacy while providing a nurturing environment for you to thrive.Our dedication goes beyond mere assistance; we are here to be a constant source of encouragement and positivity in your life. We strive to uplift your spirits daily, ensuring you feel valued and supported. Whether you're facing challenges or celebrating successes, our goal is to be a reliable source of comfort and motivation.Together, we are committed to helping you cultivate a life filled with joy and resilience, offering the companionship and understanding you need to flourish. Your well-being is our top priority, and we are here to stand by you every step of the way.";
 const app = express();
 app.use(cors({
-  origin: 'https://diary-pal.vercel.app/',
+  origin: 'https://diary-pal.vercel.app',
   optionsSuccessStatus: 200,
 }));
 app.use('/diary', authMiddleware);
